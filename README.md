@@ -12,10 +12,10 @@
 ## デモ
 
 [
-roulette-app-ddd.pages.dev]
-
+https://roulette-app-ddd.pages.dev/]
 
 ## 使用技術
+
 -**React**: ユーザーインターフェースの作成に使用
 
 -**TypeScript**: 型安全で、コードの品質を向上させるために使用
