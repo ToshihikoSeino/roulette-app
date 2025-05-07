@@ -197,27 +197,26 @@ export default function Home() {
       </button>
 
       {showConfirmModal && (
-  <div className="fixed inset-0 flex justify-center items-center">
-    <div className="bg-white p-4 rounded-lg shadow-lg border w-72">
-      <p className="text-sm font-medium mb-3">本当に削除しますか？</p>
-      <div className="flex justify-end gap-2 text-sm">
-        <button
-          onClick={handleCancelDelete}
-          className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300"
-        >
-          キャンセル
-        </button>
-        <button
-          onClick={handleConfirmDelete}
-          className="px-3 py-1 rounded bg-red-500 text-white hover:bg-red-600"
-        >
-          削除する
-        </button>
-      </div>
-    </div>
-  </div>
-)}
-
+        <div className="fixed inset-0 flex justify-center items-center">
+          <div className="bg-white p-4 rounded-lg shadow-lg border w-72">
+            <p className="text-sm font-medium mb-3">本当に削除しますか？</p>
+            <div className="flex justify-end gap-2 text-sm">
+              <button
+                onClick={handleCancelDelete}
+                className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300"
+              >
+                キャンセル
+              </button>
+              <button
+                onClick={handleConfirmDelete}
+                className="px-3 py-1 rounded bg-red-500 text-white hover:bg-red-600"
+              >
+                削除する
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }
