@@ -1,5 +1,4 @@
-import { useState, useRef } from "react";
-import { useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function Home() {
   //追加するタスク
@@ -92,11 +91,11 @@ export default function Home() {
     intervalRef.current = setInterval(() => {
       const random = tasks[Math.floor(Math.random() * tasks.length)];
       setResult(random);
-    }, 60);
+    }, 70);
 
     timeoutRef.current = setTimeout(() => {
       stopSpin();
-    }, 3000);
+    }, 5000);
   };
   //ルーレットを止める関数(連打するとバグるので修正中)
   const stopSpin = () => {
@@ -114,10 +113,11 @@ export default function Home() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4">
       {result && (
-        <div className="mt-6 text-xl font-semibold text-gray-800">
+        <div className="mt-6 text-4xl font-semibold text-gray-800">
           🎯 {result}
         </div>
       )}
+
       <h1 className="text-2xl font-bold mb-4">やることルーレット</h1>
 
       <div className="flex gap-2 mb-4">
