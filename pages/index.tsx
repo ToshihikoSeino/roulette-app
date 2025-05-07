@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { useEffect } from "react";
 
 export default function Home() {
   //追加するタスク
@@ -17,6 +18,19 @@ export default function Home() {
   const [isSpinning, setIsSpinning] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  //ページを更新してもタスクが消えないようにする
+  // 初回マウント時にlocalStorageから読み込む
+  useEffect(() => {
+    const storedTasks = localStorage.getItem("tasks");
+    if (storedTasks) {
+      setTasks(JSON.parse(storedTasks));
+    }
+  }, []);
+  // tasksが更新されるたびにlocalStorageに保存する
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
   //タスクの追加をする関数
   const addTask = () => {
