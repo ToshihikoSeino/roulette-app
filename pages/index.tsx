@@ -7,6 +7,8 @@ export default function Home() {
   //編集中のタスク
   const [editingIndex, setEditingIndex] = useState<number | null>(null);
   const [editValue, setEditValue] = useState("");
+  const [showEditEmptyModal, setShowEditEmptyModal] = useState(false);
+
   //削除するタスク
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [taskToDeleteIndex, setTaskToDeleteIndex] = useState<number | null>(
@@ -67,13 +69,13 @@ export default function Home() {
 
     const trimmed = editValue.trim();
     if (trimmed === "") {
-      alert("空白のタスクにはできません");
-      return; // 空白入力なら何もしない
+      setShowEditEmptyModal(true); // アラートの代わりにモーダル表示
+      return;
     }
+
     const updatedTasks = [...tasks];
     updatedTasks[editingIndex] = trimmed;
     setTasks(updatedTasks);
-
     setEditingIndex(null);
     setEditValue("");
   };
@@ -117,9 +119,7 @@ export default function Home() {
           🎯 {result}
         </div>
       )}
-
       <h1 className="text-2xl font-bold mb-4">やることルーレット</h1>
-
       <div className="flex gap-2 mb-4">
         <input
           type="text"
@@ -141,7 +141,6 @@ export default function Home() {
           追加
         </button>
       </div>
-
       <ul className="mb-4 text-gray-700 w-full max-w-md">
         {tasks.map((task, index) => (
           <li
@@ -197,7 +196,6 @@ export default function Home() {
           </li>
         ))}
       </ul>
-
       <button
         onClick={isSpinning ? stopSpin : handleSpin}
         disabled={tasks.length === 0 || intervalRef.current !== null}
@@ -207,9 +205,8 @@ export default function Home() {
             : "bg-blue-500 hover:bg-blue-600"
         } transition disabled:opacity-50 disabled:cursor-not-allowed`}
       >
-        {isSpinning ? "止める" : "回す！"}
+        {isSpinning ? "🌀回転中🌀" : "回す！"}
       </button>
-
       {showConfirmModal && (
         <div className="fixed inset-0 flex justify-center items-center">
           <div className="bg-white p-4 rounded-lg shadow-lg border w-72">
@@ -226,6 +223,23 @@ export default function Home() {
                 className="px-3 py-1 rounded bg-red-500 text-white hover:bg-red-600"
               >
                 削除する
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+      {showEditEmptyModal && (
+        <div className="fixed inset-0 flex justify-center items-center">
+          <div className="bg-white p-4 rounded-lg shadow-lg border w-72">
+            <p className="text-sm font-medium mb-3">
+              空白のタスクにはできません。
+            </p>
+            <div className="flex justify-end text-sm">
+              <button
+                onClick={() => setShowEditEmptyModal(false)}
+                className="px-3 py-1 rounded bg-blue-500 text-white hover:bg-blue-600"
+              >
+                OK
               </button>
             </div>
           </div>
