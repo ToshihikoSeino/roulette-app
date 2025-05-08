@@ -164,7 +164,7 @@ export default function Home() {
         />
         <button
           onClick={addTask}
-          className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
         >
           追加
         </button>
@@ -203,8 +203,8 @@ export default function Home() {
                 <div className="flex justify-between items-center">
                   <span>・{task.title}</span>
                   <div className="flex gap-1 ml-2">
-                    <button onClick={() => openDetailModal(index)} className="bg-purple-500 text-white px-2 py-1 rounded hover:bg-purple-600">詳細</button>
-                    <button onClick={() => startEdit(index)} className="bg-yellow-400 text-white px-2 py-1 rounded hover:bg-yellow-500">編集</button>
+                    <button onClick={() => startEdit(index)} className="bg-blue-500 text-white px-2 py-1 rounded hover:bg-blue-600">編集</button>
+                    <button onClick={() => openDetailModal(index)} className="bg-gray-400 text-white px-2 py-1 rounded hover:bg-gray-500">詳細</button>
                     <button onClick={() => confirmDelete(index)} className="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-700">削除</button>
                   </div>
                 </div>
@@ -245,7 +245,7 @@ export default function Home() {
           <div className="bg-white p-4 rounded-lg shadow-lg border w-72">
             <p className="text-sm font-medium mb-3">本当に削除しますか？</p>
             <div className="flex justify-end gap-2 text-sm">
-              <button onClick={handleCancelDelete} className="px-3 py-1 rounded bg-gray-200 hover:bg-gray-300">キャンセル</button>
+              <button onClick={handleCancelDelete} className="px-3 py-1 rounded bg-gray-400 text-white hover:bg-gray-500">キャンセル</button>
               <button onClick={handleConfirmDelete} className="px-3 py-1 rounded bg-red-500 text-white hover:bg-red-600">削除する</button>
             </div>
           </div>
@@ -276,7 +276,7 @@ export default function Home() {
               placeholder="詳細を入力"
             />
             <div className="flex justify-end gap-2 mt-2 text-sm">
-              <button onClick={() => setShowDetailModal(false)} className="px-3 py-1 rounded bg-gray-300 hover:bg-gray-400">閉じる</button>
+              <button onClick={() => setShowDetailModal(false)} className="px-3 py-1 rounded bg-gray-400 text-white hover:bg-gray-500">閉じる</button>
               <button onClick={saveDetail} className="px-3 py-1 rounded bg-blue-500 text-white hover:bg-blue-600">保存</button>
             </div>
           </div>
